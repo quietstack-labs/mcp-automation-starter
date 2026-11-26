@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Automation Starter</title>
+<meta name="description" content="Zero-dependency MCP server for B2B lead automation, plus a fixed-price 2-week custom MCP pilot.">
+<style>
+:root{--bg:#0b0d12;--panel:#141821;--line:#232a36;--text:#e8ecf3;--muted:#9aa4b5;--accent:#7c9cff;--accent2:#4fd1a5}
+@media (prefers-color-scheme: light){:root{--bg:#f7f8fb;--panel:#fff;--line:#e2e6ee;--text:#141821;--muted:#5b6475;--accent:#3d5afe;--accent2:#0f9d74}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR",sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:700;letter-spacing:-.01em}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);padding:6px 14px;cursor:pointer;font:inherit;font-size:14px}
+.lang button.on{background:var(--accent);color:#fff}
+.hero{padding:56px 0 40px}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:19px;max-width:680px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.badge{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--muted)}
+.badge b{color:var(--accent2)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{border:1px solid var(--line);color:var(--text)}
+section{padding:36px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card code{color:var(--accent);font-weight:600}
+.card p{margin:8px 0 0;color:var(--muted);font-size:15px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;font-size:14px}
+.offer{background:var(--panel);border:1px solid var(--accent);border-radius:18px;padding:28px}
+.price{font-size:40px;font-weight:800;margin:6px 0}
+.price small{font-size:18px;color:var(--muted);font-weight:500}
+ul.check{list-style:none;padding:0;margin:16px 0}
+ul.check li{padding:6px 0 6px 28px;position:relative}
+ul.check li:before{content:"✓";position:absolute;left:0;color:var(--accent2);font-weight:700}
+.addr{font-family:ui-monospace,Consolas,monospace;font-size:13px;word-break:break-all;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px}
+footer{padding:32px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+[data-ko]{display:none}
+html[lang=ko] [data-en]{display:none}
+html[lang=ko] [data-ko]{display:revert}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">⚡ MCP Automation Starter</div>
+  <div class="lang"><button id="b-en" class="on" onclick="setLang('en')">EN</button><button id="b-ko" onclick="setLang('ko')">한국어</button></div>
+</header>
+
+<div class="hero">
+  <h1 data-en>Plug lead automation into <span>Claude, Cursor &amp; any MCP client</span></h1>
+  <h1 data-ko>Claude·Cursor 등 모든 MCP 클라이언트에 <span>리드 자동화를 바로 연결</span></h1>
+  <p class="lead" data-en>A zero-dependency Model Context Protocol server for B2B lead handling. Node 18+, no <code>npm install</code>, one file to extend.</p>
+  <p class="lead" data-ko>B2B 리드 처리를 위한 무의존성 MCP 서버입니다. Node 18+, <code>npm install</code> 불필요, 파일 하나만 수정해 확장합니다.</p>
+  <div class="badges">
+    <span class="badge"><b>7/7</b> tests passing</span>
+    <span class="badge">0 dependencies</span>
+    <span class="badge">MIT</span>
+    <span class="badge">EN / KO</span>
+  </div>
+  <div class="cta">
+    <a class="btn p" href="mailto:alborotv@gmail.com?subject=MCP%20Automation%20Pilot%20Inquiry"><span data-en>Book a 2-week pilot</span><span data-ko>2주 파일럿 문의</span></a>
+    <a class="btn s" href="https://github.com/alborotar/mcp-automation-starter"><span data-en>View on GitHub</span><span data-ko>GitHub에서 보기</span></a>
+  </div>
+</div>
+
+<section>
+  <h2 data-en>Tools included</h2><h2 data-ko>포함된 도구</h2>
+  <div class="grid">
+    <div class="card"><code>score_lead</code><p data-en>Scores a lead 0–100 from domain, size and intent words (EN/KO) → hot / warm / cold.</p><p data-ko>도메인·규모·의도 키워드(EN/KO)로 리드를 0–100점 평가 → hot / warm / cold.</p></div>
+    <div class="card"><code>triage_leads</code><p data-en>Scores and sorts a whole batch, highest first.</p><p data-ko>리드 묶음 전체를 점수화하고 높은 순으로 정렬.</p></div>
+    <div class="card"><code>draft_outreach</code><p data-en>Personalized first-touch or follow-up email in English or Korean.</p><p data-ko>영어·한국어 맞춤 첫 연락·후속 메일 초안 작성.</p></div>
+    <div class="card"><code>to_csv</code><p data-en>Exports results as CSV for HubSpot, Sheets or Notion.</p><p data-ko>결과를 HubSpot·Sheets·Notion용 CSV로 내보내기.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 data-en>Run in 30 seconds</h2><h2 data-ko>30초 만에 실행</h2>
+<pre>git clone https://github.com/alborotar/mcp-automation-starter
+cd mcp-automation-starter
+npm test     # 7/7 unit + end-to-end stdio tests
+claude mcp add automation -- node "$PWD/src/server.js"</pre>
+  <p data-en>Then ask: <em>“Triage these 40 leads, draft outreach for the hot ones, and give me a CSV.”</em></p>
+  <p data-ko>그다음 이렇게 요청하세요: <em>“이 리드 40개를 분류하고, hot 리드에 보낼 메일 초안과 CSV를 만들어 줘.”</em></p>
+</section>
+
+<section>
+  <div class="offer">
+    <h2 data-en>2-Week Custom MCP Pilot</h2><h2 data-ko>2주 맞춤 MCP 파일럿</h2>
+    <div class="price">$1,900 <small>USD · ₩2,500,000 <span data-en>fixed</span><span data-ko>고정가</span></small></div>
+    <ul class="check" data-en>
+      <li>Your workflow wired into Claude / Cursor: Gmail, Slack, Sheets, CRM, Notion, Jira, invoices…</li>
+      <li>Working demo within 48 hours — before any payment</li>
+      <li>50% after the demo, 50% on delivery</li>
+      <li>Source code, docs and handover call included</li>
+      <li>30-day bug-fix warranty</li>
+      <li>Pay by bank wire or USDC (EVM)</li>
+    </ul>
+    <ul class="check" data-ko>
+      <li>Gmail·Slack·Sheets·CRM·Notion·Jira·인보이스 등 귀사 업무를 Claude / Cursor에 연결</li>
+      <li>결제 전 48시간 안에 작동하는 데모 제공</li>
+      <li>데모 후 50%, 납품 시 50%</li>
+      <li>소스 코드·문서·인수인계 미팅 포함</li>
+      <li>30일 버그 수정 보증</li>
+      <li>계좌이체 또는 USDC(EVM) 결제</li>
+    </ul>
+    <a class="btn p" href="mailto:alborotv@gmail.com?subject=MCP%20Automation%20Pilot%20Inquiry"><span data-en>Email alborotv@gmail.com</span><span data-ko>alborotv@gmail.com 로 문의</span></a>
+    <p style="margin-top:20px;color:var(--muted);font-size:14px" data-en>USDC (Ethereum / Base / Arbitrum / Polygon — EVM) payout address:</p>
+    <p style="margin-top:20px;color:var(--muted);font-size:14px" data-ko>USDC(EVM 계열) 입금 주소:</p>
+    <div class="addr">0x9bf9be52795B16B15984Cb031bA26A8718a05737</div>
+  </div>
+</section>
+
+<footer>
+  MIT © alborotar · <a href="https://github.com/alborotar/mcp-automation-starter" style="color:var(--accent)">github.com/alborotar/mcp-automation-starter</a>
+</footer>
+</div>
+<script>
+function setLang(l){document.documentElement.lang=l;document.getElementById('b-en').className=l==='en'?'on':'';document.getElementById('b-ko').className=l==='ko'?'on':'';try{localStorage.setItem('lang',l)}catch(e){}}
+(function(){var l;try{l=localStorage.getItem('lang')}catch(e){}if(!l&&/^ko/i.test(navigator.language||''))l='ko';if(l)setLang(l)})();
+</script>
+</body>
+</html>
