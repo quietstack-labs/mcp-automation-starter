@@ -1,5 +1,8 @@
 # MCP Automation Starter
 
+💼 **Want it production-ready?** [MCP Automation Starter Kit ($49)](https://playmaster72.gumroad.com/l/mcp-automation-starter) adds setup guides, extra tools and templates · Support-desk variant: [MCP Support & Quote Starter Kit ($49)](https://playmaster72.gumroad.com/l/mcp-support-quote-starter)
+
+
 Zero-dependency **Model Context Protocol (MCP) server** that plugs B2B lead-handling automation straight into Claude Desktop, Claude Code, Cursor or any MCP client. Node 18+, no `npm install`, one file to extend.
 
 ## Tools included
